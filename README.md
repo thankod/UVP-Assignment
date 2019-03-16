@@ -1,13 +1,14 @@
 # StepOut Teamwork
-## TeamMember: LinZhichao, Wang BangZheng, XieTian
+## Members of Team: LinZhichao, Wang BangZheng, XieTian
 
+## Controls
 ### ScrollViewer
 #### Reason:
 > 因为我们将要做的Project是为科研工作者服务的。因此需要一个能够支持垂直滚动的控件来做到阅读论文、笔记以及浏览自己管理的命令行参数(一个页面显示不全)等。
 #### Platform:
 > IOS by Swift
-
 #### examples
+选用控件: ScrollViewer in UWP | UIScorollView in Swift
 >由于ios storyboard的方便性。因此我们在创建ios工程后 在控件区搜索UIScorollView
 ![Alt text](img/1.png)
 拖动到UI中
@@ -29,6 +30,7 @@
 #### Platform:
 >Wechat mini-program
 #### Code:
+选用控件: NavigationView in UWP | NavigationView in Swift
 ```
 <script>
 import wepy from 'wepy';
