@@ -1,12 +1,13 @@
-# FastReserach Team HomeWork
-## ScrollViewer
+# StepOut Teamwork
+## TeamMember: LinZhichao, Wang BangZheng, XieTian
 
-### Reason:
+### ScrollViewer
+#### Reason:
 > 因为我们将要做的Project是为科研工作者服务的。因此需要一个能够支持垂直滚动的控件来做到阅读论文、笔记以及浏览自己管理的命令行参数(一个页面显示不全)等。
-### Platform:
+#### Platform:
 > IOS by Swift
 
-### examples
+#### examples
 >由于ios storyboard的方便性。因此我们在创建ios工程后 在控件区搜索UIScorollView
 ![Alt text](img/1.png)
 拖动到UI中
@@ -22,12 +23,12 @@
 运行后的效果:\
 ![Alt text](img/8.gif)
 
-## NavigationView
- ### Reason:
+### NavigationView
+#### Reason:
 > 基本上所有Project是包含导航的，能够起到快速查找所需要的信息并且使程序结构贬的清晰。于是我们选择用NavigationView这个组件来进行导航，它基本满足了我们对导航需要的所有需求，能够进行界面之间的跳转并且能够做到弹放导航框。
-### Platform:
+#### Platform:
 >Wechat mini-program
-### Code:
+#### Code:
 ```
 <script>
 import wepy from 'wepy';
