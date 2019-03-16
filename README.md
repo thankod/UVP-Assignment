@@ -21,3 +21,51 @@
 ![Alt text](7.png)
 运行后的效果:\
 ![Alt text](8.gif)
+## NavigationView
+
+ ### Reason:
+> 基本上所有Project是包含导航的，能够起到快速查找所需要的信息并且使程序结构贬的清晰。于是我们选择用NavigationView这个组件来进行导航，它基本满足了我们对导航需要的所有需求，能够进行界面之间的跳转并且能够做到弹放导航框。
+### Platform:
+>Wechat mini-program
+### Code:
+<script>
+import wepy from 'wepy';
+import 'wepy-async-function';
+ export default class extends wepy.app {
+    config = {
+        pages: ['pages/test1', 'pages/test2'],
+        window: {
+            backgroundTextStyle: 'light',
+            navigationBarBackgroundColor: '#fff',
+            navigationBarTitleText: '实验程序',
+            navigationBarTextStyle: 'black'
+        },
+        tabBar: {
+            list: [{
+                pagePath: "pages/test1",
+                text: "界面1",
+                iconPath: "pages/icon.png",
+                selectedIconPath: "pages/test1/selectedIcon.png"
+            }, {
+                pagePath: "pages/test2",
+                text: "界面2",
+                iconPath: "pages/icon.png",
+                selectedIconPath: "pages/test2/selectedIcon.png"
+            }],
+            selectedColor: "#09bb07"
+        },
+        debug: true
+    }
+
+     onLaunch() {
+        wx.getSystemInfo({
+            success(data) {
+                console.log(data)
+            },
+            fail() {
+                console.log("fail")
+            }
+        })
+    }
+}
+</script>
