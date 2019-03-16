@@ -20,7 +20,7 @@
 添加两个button
 ![Alt text](img/7.png)
 运行后的效果:\
-![Alt text](8.gif)
+![Alt text](img/8.gif)
 
 ## NavigationView
  ### Reason:
@@ -69,6 +69,6 @@ import 'wepy-async-function';
         })
     }
 }
-```
 </script>
+```
 
