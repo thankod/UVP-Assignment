@@ -30,7 +30,7 @@
 #### Platform:
 >Wechat mini-program
 #### Code:
-选用控件: NavigationView in UWP | NavigationView in Swift
+选用控件: NavigationView in UWP | NavigationView in Wechat mini-program
 ```
 <script>
 import wepy from 'wepy';
