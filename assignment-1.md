@@ -8,16 +8,16 @@
 
 ### examples
 >由于ios storyboard的方便性。因此我们在创建ios工程后 在控件区搜索UIScorollView
-![Alt text](1.png)
+![Alt text](img/1.png)
 拖动到UI中
-![Alt text](2.png)
+![Alt text](img/2.png)
 添加约束
-![Alt text](3.png)
+![Alt text](img/3.png)
 添加view控件
-![Alt text](4.png)
+![Alt text](img/4.png)
 修改view控件的高度以及添加约束
-![Alt text](6.png)
+![Alt text](img/6.png)
 添加两个button
-![Alt text](7.png)
+![Alt text](img/7.png)
 运行后的效果:\
-![Alt text](8.gif)
+![Alt text](img/8.gif)
