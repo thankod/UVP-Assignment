@@ -87,6 +87,6 @@ import 'wepy-async-function';
 三行分别设置：无上下文菜单、占位提示内容、使用模糊字符代替实际输入的字符
 ![Alt text](img/10.png)
 没有输入密码时的效果
-![Alt text](img/11.png)
+![Alt text](img/11.png)\
 输入密码时的效果
 ![Alt text](img/12.png)
