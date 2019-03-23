@@ -199,7 +199,7 @@ class ViewController: UIViewController {
 
 }
  ```
-5. 运行后显示效果为 :
+5. 运行后显示效果为: \
 ![Alt text](img/16.png)
 
 
