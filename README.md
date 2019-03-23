@@ -1,4 +1,5 @@
 # StepOut Teamwork
+## Name of Team: FastResearch
 ## Members of Team: LinZhichao, Wang BangZheng, XieTian
 
 ## Controls
@@ -24,56 +25,57 @@
 运行后的效果:\
 ![Alt text](img/8.gif)
 
-### NavigationView
+### data binding
 #### Reason:
-> 基本上所有Project是包含导航的，能够起到快速查找所需要的信息并且使程序结构贬的清晰。于是我们选择用NavigationView这个组件来进行导航，它基本满足了我们对导航需要的所有需求，能够进行界面之间的跳转并且能够做到弹放导航框。
+> In our program, we need create some tools and papers.For this reason,if we use data-binding,it would help users know what the tools and papers are, and make it easy for the testing.
 #### Platform:
 >Wechat mini-program
 #### Code:
-选用控件: NavigationView in Wechat mini-program | NavigationView in UWP 
 ```
+<view class="main-map">
+    <!--使用地图控件来展示数据绑定-->
+    <map id="map-body" longitude="{{longitude}}" latitude="{{latitude}}" scale="{{scale}}"
+        controls="{{controls}}" markers="{{markers}}"
+        show-location   bindregionchange="regionchange"
+        style="width:100%;height:{{height}}px">
+    </map>
+</view>
+<!-- script部分代码节选 -->
 <script>
 import wepy from 'wepy';
 import 'wepy-async-function';
  export default class extends wepy.app {
-    config = {
-        pages: ['pages/test1', 'pages/test2'],
-        window: {
-            backgroundTextStyle: 'light',
-            navigationBarBackgroundColor: '#fff',
-            navigationBarTitleText: '实验程序',
-            navigationBarTextStyle: 'black'
-        },
-        tabBar: {
-            list: [{
-                pagePath: "pages/test1",
-                text: "界面1",
-                iconPath: "pages/icon.png",
-                selectedIconPath: "pages/test1/selectedIcon.png"
-            }, {
-                pagePath: "pages/test2",
-                text: "界面2",
-                iconPath: "pages/icon.png",
-                selectedIconPath: "pages/test2/selectedIcon.png"
-            }],
-            selectedColor: "#09bb07"
-        },
-        debug: true
+        data = {//data赋值这里不需要使用this.setData({}),在这里将需要的数据赋给初值。
+         resData: [],
+         scale: 18,
+         latitude: '',
+         longitude: '',
+         markers: [],
+         controls: [{}]
     }
-
-     onLaunch() {
-        wx.getSystemInfo({
-            success(data) {
-                console.log(data)
-            },
-            fail() {
-                console.log("fail")
+    onLoad() {
+        qqmapsdk = new QQMapWX({ //调用腾讯地图需要的sqk。
+            key: 'SO6BZ-MGZW3-C563P-Y57QJ-Q3SOS-UDBF5'
+        })
+        wx.getLocation({
+            //获得用户当前位置
+            type: 'gcj02',//gcj20更精准
+            success: (res) => {
+                var latitude = res.latitude
+                var longitude = res.longitude
+                this.latitude = latitude
+                this.longitude = longitude
+                this.$apply()//在自定义的方法里面用this.之后，需要用this.$apply()来进行数据绑定。
+                console.log(res)
             }
         })
     }
 }
 </script>
 ```
+#### Tips
+>微信小程序的数据绑定相对于uwp的我个人认为简化了很多，但是也有几点需要注意的，在不同函数中的数据绑定是不相同的，data中可以直接赋初值，比如我们用的经纬度，可以查询后直接设置，这样一打开就是你设置的经纬度；但methods里面只能放bindtap这类方法，所以你自己定义的其他方法，或者写在onshow里面，就必须得用this.$apply()。
+
 ## PasswordBox
 
 ### Reason:
