@@ -202,7 +202,51 @@ class ViewController: UIViewController {
 5. 运行后显示效果为: \
 ![Alt text](img/16.png)
 
+## Technique:
+> 获取需要打开的多个文件的完整路径和文件名
+## Reason:
+> 我们的产品需要管理多个PDF文件，因此需要在程序中获取多个PDF的文件完整路径和文件名
+#### Platform:
+> Qt on Linux
+#### Examples
+##### In Uwp
+> 在UWP中，我们要获取多个文件的完整路径和文件名，可以用FileOpenPicker类进行相关操作。核心代码如下：
+ ```
+ var picker = new Windows.Storage.Pickers.FileOpenPicker();
+ picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.List;//设置显示项目的视图为列表视图
+ picker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.DocumentsLibrary;//设置默认的位置为“文档”目录
+ picker.FileTypeFilter.Add(".pdf");//设置显示文件类型为.pdf拓展名
+ var files = await picker.PickMultipleFilesAsync();//显示文件选取器，将选中的多个文件存入files中
+ if (files.Count > 0)
+ {
+    //将获取的所有文件的文件名输出
+    foreach (var file in files)
+    {
+        Debug.WriteLine(file.Name + "\n");
+    }
+ }
+ ```
+ > 文件选取对话框效果：
+ ![Alt text](img/17.png)
 
+ > 文件名输出效果：
+ ![Alt text](img/18.png)
 
+##### In Qt
+> 在Qt中，我们可以直接调用QFileDialog::getOpenFileNames函数进行获取文件名，核心代码如下：
+```
+/*
+ * 第一个参数是父组件，第二个参数是对话框的标题，
+ * 第三个参数是对话框打开时默认的目录，这里设置为程序运行目录，
+ * 第四个参数是文件后缀名过滤器，这里设置PDF files和All files两种。
+ */
+QStringList fileNames = QFileDialog::getOpenFileNames(this, tr("打开文件"), "./",
+                                                    tr("PDF files(*.pdf);;All files (*.*)"));
+    qDebug()<<"filenames:"<<fileNames;
+```
+> 文件选取对话框效果：
+ ![Alt text](img/19.png)
 
+ > 文件名输出效果：
+ ![Alt text](img/20.png)
 
