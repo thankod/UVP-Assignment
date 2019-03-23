@@ -74,4 +74,19 @@ import 'wepy-async-function';
 }
 </script>
 ```
+## PasswordBox
 
+### Reason:
+>  在这个注重个人隐私的时代，密码对用户而言十分重要，而且密码功能也能防止某些别有用心的人恶意篡改用户数据，因此我们需要加入密码功能，而输入密码，显然需要一个不会明文显示密码的文本框。
+### Platform:
+> Qt on KDE
+
+### examples
+>Qt并没有直接的密码框控件，但是可以用Line Edit来实现
+![Alt text](img/9.png)
+三行分别设置：无上下文菜单、占位提示内容、使用模糊字符代替实际输入的字符
+![Alt text](img/10.png)
+没有输入密码时的效果
+![Alt text](img/11.png)\
+输入密码时的效果
+![Alt text](img/12.png)
