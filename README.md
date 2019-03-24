@@ -7,6 +7,7 @@
 > 因为我们的Project需要做到阅读论文,这就需要能通过一定的方法来展示pdf文件。因此接下来将要介绍如何在IOS开发平台上使用PDFKIT来展示pdf文件。
 #### Platform:
 > IOS Xcode Swift
+
 #### Examples
 ##### In Uwp
 在uwp中，我们要在一个UI中中显示pdf,我们需要用到在命名空间Windows.Data.Pdf的类与方法.
@@ -203,6 +204,48 @@ class ViewController: UIViewController {
 ![Alt text](img/16.png)
 
 
-
-
+### data binding
+#### Reason:
+> In our program, we need create some tools and papers.For this reason,if we use data-binding,it would help users know what the tools and papers are, and make it easy for the testing.
+#### Platform:
+>Wechat mini-program
+#### Tips
+>微信小程序的数据绑定相对于uwp的我个人认为简化了很多，但是也有几点需要注意的，在不同函数中的数据绑定是不相同的，data中可以直接赋初值，比如我们用的经纬度，可以查询后直接设置，这样一打开就是你设置的经纬度；但methods里面只能放bindtap这类方法，所以你自己定义的其他方法，或者写在onshow里面，就必须得用this.$apply()。
+#### Code:
+```
+<view class="main-map">
+    <!--使用地图控件来展示数据绑定-->
+    <map id="map-body" longitude="{{longitude}}" latitude="{{latitude}}" scale="{{scale}}"
+        controls="{{controls}}" markers="{{markers}}"
+        show-location   bindregionchange="regionchange"
+        style="width:100%;height:{{height}}px">
+    </map>
+</view>
+<!-- script部分代码节选 -->
+<script>
+import wepy from 'wepy';
+import 'wepy-async-function';
+ export default class extends wepy.app {
+        data = {//data赋值这里不需要使用this.setData({}),在这里将需要的数据赋给初值。
+         resData: [],
+         scale: 18,
+         latitude: '',
+         longitude: '',
+         markers: [],
+         controls: [{}]
+    }
+    onLoad() {
+        qqmapsdk = new QQMapWX({ //调用腾讯地图需要的sqk。
+            key: 'SO6BZ-MGZW3-C563P-Y57QJ-Q3SOS-UDBF5'
+        })
+        wx.getLocation({
+            //获得用户当前位置
+            type: 'gcj02',//gcj20更精准
+            success: (res) => {
+                var latitude = res.latitude
+                var longitude = res.longitude
+                this.latitude = latitude
+                this.longitude = longitude
+                this.$apply()//在自定义的方法里面用this.之后，需要用this.$apply()来进行数据绑定。
+                console.log(res)
 
