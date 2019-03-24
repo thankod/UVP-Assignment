@@ -1,4 +1,5 @@
 # StepOut Teamwork
+## TeamName: FastResearch
 ## Members of Team: LinZhichao, Wang BangZheng, XieTian
 
 ## Controls
